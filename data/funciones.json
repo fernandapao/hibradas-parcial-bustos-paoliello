@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "funcion": "Información de vuelo",
+        "descripcion": "Cuando los usuarios ingresan su número de vuelo les aparece toda la información clara"
+    },
+    {
+        "id": 2,
+        "funcion": "Mapa",
+        "descripcion": "Los usuarios van a poder encontrar en un mapa todos los lugares cercanos que hay en el aeropuerto"
+    },
+    {
+        "id": 3,
+        "funcion": "Asistencia",
+        "descripcion": "Los usuarios van a poder solicitar asistencia en los aeropuertos mediante un chatbot en la aplicación"
+    }
+]

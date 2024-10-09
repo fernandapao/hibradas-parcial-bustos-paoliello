@@ -1,0 +1,62 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+    min-height: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+}
+
+.navmodificado{
+    background-color: #FEBB02;
+    color: #113C73;
+    height: 70px;
+    font-weight: bolder;
+}
+
+.separador {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    padding: 20px; /* Opcional */
+}
+
+.left {
+    padding-left: 3rem;
+}
+
+.right {
+    padding-right: 3rem;
+}
+
+
+h1 {
+    display: none;
+}
+
+img {
+    width: 90%;
+}
+
+.logo {
+    margin-top: 3rem;
+}
+
+.logo-nav {
+    max-width: 150px;
+}
+
+.texto {
+    font-size: 1.3rem;
+    margin: 3rem 0;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #113C73;
+    color: whitesmoke;
+}

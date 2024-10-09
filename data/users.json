@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "nombre": "pepe",
+    "apellido": "perez",
+    "usuario": "pepeperez",
+    "email": "pepe@pepe.com"
+  },
+  {
+    "id": 2,
+    "nombre": "juancito",
+    "apellido": "perez2",
+    "usuario": "juanperez2",
+    "email": "juan@pepe.com"
+  },
+  {
+    "id": 3,
+    "nombre": "Cintia",
+    "apellido": "Bustos",
+    "usuario": "CintiaB",
+    "email": "cintia.bustos@davinci.edu.ar",
+    "contrasenia": "$2b$10$ni24xsVKFqZ5UMaBZdyLueplXlN1v0iFu18KVM/AwHROuLFcu.McG"
+  }
+]

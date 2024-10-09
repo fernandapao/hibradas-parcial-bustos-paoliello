@@ -1,0 +1,27 @@
+{
+    "novedades": [
+      {
+        "id": 1,
+        "nombre": "Nueva terminal en el aeropuerto",
+        "descripcion": "Se ha inaugurado una nueva terminal con acceso rápido a las puertas de embarque.",
+        "categoria": "Infraestructura",
+        "fecha": "2024-09-15"
+      },
+      {
+        "id": 2,
+        "nombre": "Actualización del mapa interactivo",
+        "descripcion": "El mapa ha sido actualizado con nuevos puntos de interés dentro del aeropuerto.",
+        "categoria": "Actualización de software",
+        "fecha": "2024-09-20"
+      },
+      {
+        "id": 3,
+        "nombre": "Nuevo servicio de asistencia 24/7",
+        "descripcion": "Hemos mejorado nuestro servicio de chat de asistencia para estar disponibles 24 horas, todos los días.",
+        "categoria": "Servicio",
+        "fecha": "2024-09-10"
+      }
+    ]
+
+}
+
