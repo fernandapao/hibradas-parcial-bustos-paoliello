@@ -1,20 +1,14 @@
-import fs from "fs"
-import path from "path"
-import { fileURLToPath } from "url";
 
-const __fileName = fileURLToPath(import.meta.url);
-const archivoNovedadesPath = path.join(path.dirname(__fileName), '../data/novedades.json');
+import mongoose from "mongoose";
 
+const novedadesSchema = new mongoose.Schema({
+        nombre: {type: String, required: true},
+        descripcion: {type: String, required: true},
+        categoria: {type: String, required: true},
+        fecha:{type: Date, required: true}
 
-const leerArchivoNovedades = () => {
-    const data = fs.readFileSync(archivoNovedadesPath, 'utf-8');
-    return JSON.parse(data);
-}
+})
 
+export default mongoose.model('novedades', novedadesSchema);
 
-const escribirArchivoNovedades = (data) => {
-    fs.writeFileSync(archivoNovedadesPath, JSON.stringify(data), 'utf-8');
-}
-
-export{leerArchivoNovedades, escribirArchivoNovedades};
 

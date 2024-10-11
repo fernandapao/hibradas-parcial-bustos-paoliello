@@ -1,65 +1,57 @@
-import { leerArchivoFunciones, escribirArchivoFunciones } from "../model/funcionesModel.js";
+import Funciones from "../model/funcionesModel.js"
 
-const getTodasFunciones = (req, res) => {
-    let funciones = leerArchivoFunciones();
-    res.status(200).json(funciones);
-}
-
-
-const getTodasFuncionesId = (req, res) => {
-    const funcionId = parseInt(req.params.id);
-    let funciones = leerArchivoFunciones();
-    const funcion = funciones.find(a => a.id === funcionId);
-
-    if(funcion) {
-        res.status(200).json(novedad);
-    } else {
-        res.status(404).json({message: "Funcion no encontrada"});
+export const createFuncion = async (req, res) => {
+    //validacion
+    const {error} = funcionesValidacion(req.body);
+    if(error) return res.status(400).json({error:error.details[0].message})
+        console.log(error)
+    try {
+            const funcion = new Funciones({...req.body});
+            const guardarFunciones = await funcion.save();
+            res.json(guardarFunciones)
+    }catch(err){
+        res.status(400).json({error:err.mesagge})
     }
-}
+};
 
-
-const crearFuncion = (req, res) => {
-    let funciones = leerArchivoFunciones();
-    const nuevaFuncion = {
-        id: funciones.length > 0 ? funciones.length + 1 : 1,
-        funcion: req.body.funcion,
-        descripcion: req.body.descripcion
+export const getFuncion = async (req, res) => {
+    try {
+        const funcion = await Funciones.find();
+        res.json(funcion)
+            
+    }catch(err){
+        res.status(400).json({error:err.mesagge})
     }
-   funciones.push(nuevaFuncion);
-   escribirArchivoFunciones(funciones);
-   res.status(201).json(nuevaFuncion);
-}
+};
 
-
-const actualizarFuncion = (req, res) => {
-    const funcionId = parseInt(req.params.id);
-    let funciones = leerArchivoFunciones();
-    const funcionIndex = funciones.findIndex(a => a.id === funcionId);
-
-    if(funcionIndex !== -1) {
-        funciones[funcionIndex] = {id: funcionId, ...req.body};
-        escribirArchivoFunciones(funciones);
-        res.status(200).json(funciones[funcionIndex])
-    } else {
-        res.status(404).json({message: "Funcion no encontrada"});
+export const getFuncionById = async (req, res) => {
+    try {
+        const funcion = await Funciones.findById(req.params.id);
+        if(!funcion) return res.status(400).json({error: "no disponible"})
+        res.json(funcion)
+            
+            
+    }catch(err){
+        res.status(400).json({error:err.mesagge})
     }
-}
+};
 
-
-const eliminarFuncion = (req, res) => {
-    const funcionId = parseInt(req.params.id);
-    let funciones = leerArchivoFunciones();
-    const funcionIndex = funciones.findIndex(a => a.id === funcionId);
-
-    if(funcionIndex !== -1) {
-        funciones.splice(funcionIndex, 1)
-        escribirArchivoFunciones(funciones);
-        res.status(204).send();
-    } else {
-        res.status(404).json({message: "Funcion no encontrada"});
+export const updateFuncion = async (req, res) => {
+    try {
+        const actualizarFuncion = await Funciones.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.json(actualizarFuncion)
+            
+    }catch(err){
+        res.status(400).json({error:err.mesagge})
     }
-}
+};
 
-
-export {getTodasFunciones, getTodasFuncionesId, crearFuncion, actualizarFuncion, eliminarFuncion}
+export const deleteFuncion = async (req, res) => {
+    try {
+        const eliminarFuncion = await Funciones.findByIdAndDelete(req.params.id, req.body)
+        res.json(eliminarFuncion)
+            
+    }catch(err){
+        res.status(400).json({error:err.mesagge})
+    }
+};

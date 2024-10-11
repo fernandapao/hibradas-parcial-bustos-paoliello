@@ -1,22 +1,24 @@
-import express from "express"
-import {getTodasNovedades, getTodasNovedadesId, crearNovedad, actualizarNovedad, eliminarNovedad} from "../controllers/novedadesController.js";
+import express from "express";
+import {buscarByCategoria, createNovedad, deleteNovedad, getNovedad, getNovedadById, updateNovedad, buscarByNombre, getOrdenar} from "../controllers/novedadesController.js";
 
-const router = express.Router();
+ 
 
+ const router = express.Router();
 
-// Todas las novedades
-router.get('/', getTodasNovedades);
+ router.post('/', createNovedad);
 
-// Novedades por id
-router.get('/:id', getTodasNovedadesId);
+ router.get('/', getNovedad);
 
-// Crear novedad
-router.post('/', crearNovedad);
+ router.get('/:id', getNovedadById);
 
-// Actualizar una Novedad
-router.put('/:id', actualizarNovedad);
+ router.get('/buscar/nombre', buscarByNombre);
 
-// Eliminar una novedad
-router.delete('/:id', eliminarNovedad);
+ router.get('/buscar/categoria', buscarByCategoria);
 
-export default router;
+ router.put('/:id', updateNovedad);
+
+ router.delete('/:id', deleteNovedad);
+
+ router.get('/novedades', getOrdenar);
+
+ export default router;

@@ -1,22 +1,17 @@
-import express from "express"
-import {getTodasFunciones, getTodasFuncionesId, crearFuncion, actualizarFuncion, eliminarFuncion} from "../controllers/funcionesController.js";
+ import express from "express";
+ import {createFuncion, deleteFuncion, getFuncion, getFuncionById, updateFuncion} from "../controllers/funcionesController.js"
 
-const router = express.Router();
+ const router = express.Router();
 
+ router.post('/', createFuncion);
 
-// Todas las funciones
-router.get('/', getTodasFunciones);
+ router.get('/', getFuncion);
 
-// funciones por id
-router.get('/:id', getTodasFuncionesId);
+ router.get('/:id', getFuncionById);
 
-// Crear funcion
-router.post('/', crearFuncion);
+ router.put('/:id', updateFuncion);
 
-// Actualizar una funcion
-router.put('/:id', actualizarFuncion);
+ router.put('/:id', deleteFuncion);
+ 
 
-// Eliminar una funcion
-router.delete('/:id', eliminarFuncion);
-
-export default router;
+ export default router;

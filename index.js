@@ -4,12 +4,16 @@ import { fileURLToPath } from "url";
 import novedadesRoutes from './routes/novedadesRoutes.js'; 
 import funcionesRoutes from './routes/funcionesRoutes.js';
 import usersRoutes from './routes/usersRoutes.js';
-
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config()
 
 const app = express();
 const port = 3000;
+
+mongoose.connect(process.env.MONGODB_URI)
+.then(() => console.log("La conexion fue exitosa con mongodb."))
+.catch((error) => console.error("Error al conectar con mongodb.", error))
 
 const __fileName = fileURLToPath(import.meta.url);
 app.use(express.json());
@@ -44,14 +48,3 @@ app.use('/usuarios', usersRoutes);
 
 
 app.listen(port, () => console.log(`http://localhost:${port}`));
-
-dotenv.config();
-
-const mongoURI = process.env.MONGO_URI; // Debes definir MONGO_URI en tu archivo .env con la cadena de conexión
-
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Conectado a MongoDB'))
-.catch((err) => console.error('Error conectando a MongoDB:', err));
