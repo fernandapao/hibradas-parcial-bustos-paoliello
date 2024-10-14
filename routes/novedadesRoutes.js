@@ -1,5 +1,5 @@
 import express from "express";
-import {buscarByCategoria, createNovedad, deleteNovedad, getNovedad, getNovedadById, updateNovedad, buscarByNombre, getOrdenar} from "../controllers/novedadesController.js";
+import {buscarByCategoria, createNovedad, deleteNovedad, getNovedad, getNovedadById, updateNovedad, buscarByNombre} from "../controllers/novedadesController.js";
 
  
 
@@ -19,6 +19,6 @@ import {buscarByCategoria, createNovedad, deleteNovedad, getNovedad, getNovedadB
 
  router.delete('/:id', deleteNovedad);
 
- router.get('/novedades', getOrdenar);
+ //router.get('/novedades', getOrdenar);
 
  export default router;

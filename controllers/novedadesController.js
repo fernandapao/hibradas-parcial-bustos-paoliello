@@ -83,31 +83,27 @@ export const buscarByNombre = async (req, res) => {
 
 //Paginado
 
-export const getOrdenar = async (req, res) => {
-    try {
-        const page = parseInt(req.query.page) || 1; // Página actual (por defecto 1)
-        const limit = parseInt(req.query.limit) || 10; // Número de resultados por página (por defecto 10)
-        const skip = (page - 1) * limit; // Cálculo para saltar los resultados
+// export const getOrdenar = async (req, res) => {
+//     try {
+//         const page = parseInt(req.query.page) || 1; // Página actual (por defecto 1)
+//         const limit = parseInt(req.query.limit) || 10; // Número de resultados por página (por defecto 10)
+//         const skip = (page - 1) * limit; // Cálculo para saltar los resultados
 
-        // Ordenamiento
-        const sortField = req.query.sortField || 'fecha'; // Campo por el que se ordenará (por defecto 'fecha')
-        const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1; // Orden (ascendente o descendente)
+//         // Obtener las novedades con paginado
+//         const novedades = await Novedades.find()
+//             .skip(skip) // Saltar los primeros 'skip' resultados
+//             .limit(limit); // Limitar el número de resultados
 
-        // Obtener las novedades con paginado y ordenamiento
-        const novedades = await Novedades.find()
-            .sort({ [sortField]: sortOrder }) // Ordenar por el campo y el orden especificado
-            .skip(skip) // Saltar los primeros 'skip' resultados
-            .limit(limit); // Limitar el número de resultados
+//         const total = await Novedades.countDocuments(); // Total de documentos
 
-        const total = await Novedades.countDocuments(); // Total de documentos
+//         res.status(200).json({
+//             total, // Total de novedades disponibles
+//             page,  // Página actual
+//             limit, // Número de resultados por página
+//             novedades // Resultados de la página actual
+//         });
+//     } catch (error) {
+//         res.status(500).json({ message: 'Error al obtener las novedades' });
+//     }
+// };
 
-        res.status(200).json({
-            total,
-            page,
-            limit,
-            novedades
-        });
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener las novedades' });
-    }
-};
