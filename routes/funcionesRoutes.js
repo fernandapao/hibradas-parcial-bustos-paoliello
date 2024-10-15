@@ -1,5 +1,5 @@
  import express from "express";
- import {createFuncion, deleteFuncion, getFuncion, getFuncionById, updateFuncion} from "../controllers/funcionesController.js"
+ import {createFuncion, deleteFuncion, getFuncion, getFuncionById, updateFuncion, buscarByFuncion} from "../controllers/funcionesController.js"
 
  const router = express.Router();
 
@@ -12,6 +12,9 @@
  router.put('/:id', updateFuncion);
 
  router.put('/:id', deleteFuncion);
+
+router.get('/buscar/funcion', buscarByFuncion);
+
  
 
  export default router;

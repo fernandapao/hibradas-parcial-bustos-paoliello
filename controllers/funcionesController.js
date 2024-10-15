@@ -55,3 +55,15 @@ export const deleteFuncion = async (req, res) => {
         res.status(400).json({error:err.mesagge})
     }
 };
+
+//Buscar por funcion: mapa, asistencia, informacion
+export const buscarByFuncion = async (req, res) => {
+    try {
+        const funcion = req.query.funcion;
+        const funciones = await Funciones.find({ funcion: funcion }); 
+        res.status(200).json(funciones); 
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+

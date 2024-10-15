@@ -1,5 +1,27 @@
 import Novedades from "../model/novedadesModel.js";
 
+export const getNovedades = async (req, res) => {
+    try {
+       
+        const page = parseInt(req.query.page) || 1;  
+        const limit = parseInt(req.query.limit) || 10; 
+
+        // Usar el método `paginate` de Mongoose
+        const novedades = await Novedades.paginate({}, { page, limit });
+
+        res.json({
+            totalDocs: novedades.totalDocs,
+            totalPages: novedades.totalPages,
+            currentPage: novedades.page,
+            docs: novedades.docs,
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener las novedades', error });
+    }
+};
+
+
+
 export const createNovedad = async (req, res) => {
     //validacion
     const {error} = novedadesValidacion(req.body);
@@ -22,7 +44,9 @@ export const getNovedad = async (req, res) => {
     }catch(err){
         res.status(400).json({error:err.message})
     }
+
 };
+
 
 export const getNovedadById = async (req, res) => {
     try {
@@ -57,13 +81,14 @@ export const deleteNovedad = async (req, res) => {
     }
 };
 
+//Buscar por categoria: infraestructura, actualizacion de software, servicio
 export const buscarByCategoria = async (req, res) => {
     try {
-            const buscarCategoria = req.query.buscarCategoria.split(',')
-            const novedades = await Novedades.find({categoria:{$in:buscarCategoria}});
-            res.json(novedades)
-    }catch(err){
-        res.status(400).json({error:err.message})
+        const categoria = req.query.categoria; 
+        const novedades = await Novedades.find({ categoria: categoria }); 
+        res.status(200).json(novedades); 
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 };
 
@@ -76,34 +101,3 @@ export const buscarByNombre = async (req, res) => {
         res.status(400).json({error:err.message})
     }
 };
-
-
-
-
-
-//Paginado
-
-// export const getOrdenar = async (req, res) => {
-//     try {
-//         const page = parseInt(req.query.page) || 1; // Página actual (por defecto 1)
-//         const limit = parseInt(req.query.limit) || 10; // Número de resultados por página (por defecto 10)
-//         const skip = (page - 1) * limit; // Cálculo para saltar los resultados
-
-//         // Obtener las novedades con paginado
-//         const novedades = await Novedades.find()
-//             .skip(skip) // Saltar los primeros 'skip' resultados
-//             .limit(limit); // Limitar el número de resultados
-
-//         const total = await Novedades.countDocuments(); // Total de documentos
-
-//         res.status(200).json({
-//             total, // Total de novedades disponibles
-//             page,  // Página actual
-//             limit, // Número de resultados por página
-//             novedades // Resultados de la página actual
-//         });
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error al obtener las novedades' });
-//     }
-// };
-

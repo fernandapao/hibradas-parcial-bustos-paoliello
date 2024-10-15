@@ -1,5 +1,6 @@
 
 import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const novedadesSchema = new mongoose.Schema({
         nombre: {type: String, required: true},
@@ -9,6 +10,8 @@ const novedadesSchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model('novedades', novedadesSchema);
 
+novedadesSchema.plugin(mongoosePaginate);
 
+const Novedad = mongoose.model('novedades', novedadesSchema);
+export default Novedad;
