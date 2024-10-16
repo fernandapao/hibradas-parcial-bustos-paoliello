@@ -53,7 +53,7 @@
             <br>
             <div><!-- NOVEDADES -->
                 <h3>Novedades</h3>
-                <p>Ingresando por GET vamos a poder obtener la siguiente información:</p>
+                <p><span class="url">Ingresando por GET</span> vamos a poder obtener la siguiente información:</p>
                 <div class="codigo">
                     <p>http://localhost:3000<span class="url">/novedades</span> Redirige al json con todas las novedades
                     </p>
@@ -77,7 +77,8 @@
                 <br>
                 <span class="url">Ingresando por PUT</span>
                 <div class="codigo">
-                    <p>http://localhost:3000<span class="url">/novedades/:id</span> Vamos a poder actualizar una novedad</p>
+                    <p>http://localhost:3000<span class="url">/novedades/:id</span> Vamos a poder actualizar una novedad
+                    </p>
                 </div>
                 <br>
                 <span class="url">Ingresando por DELETE</span>
@@ -87,13 +88,16 @@
                 </div>
             </div>
 
-            <div class="mt-5"><!-- NOVEDADES -->
+            <div class="mt-5"><!-- FUNCIONES -->
                 <h3>Funciones</h3>
-                <p>Ingresando por GET vamos a poder obtener la siguiente información:</p>
+                <p><span class="url">Ingresando por GET</span> vamos a poder obtener la siguiente información:</p>
                 <div class="codigo">
-                    <p>http://localhost:3000<span class="url">/funciones</span> Redirige al json con todas las funciones</p>
-                    <p>http://localhost:3000<span class="url">/funciones/:id</span> Lleva al json con la funcion especifica de ese id</p>
-                    <p>http://localhost:3000<span class="url">/funciones/buscar/funcion</span> Vamos a poder filtrar las funciones por el nombre</p>
+                    <p>http://localhost:3000<span class="url">/funciones</span> Redirige al json con todas las funciones
+                    </p>
+                    <p>http://localhost:3000<span class="url">/funciones/:id</span> Lleva al json con la funcion
+                        especifica de ese id</p>
+                    <p>http://localhost:3000<span class="url">/funciones/buscar/funcion</span> Vamos a poder filtrar las
+                        funciones por el nombre</p>
                 </div>
                 <br>
                 <p>Vamos a poder hacer las siguientes acciones en base a Funciones:</p>
@@ -105,12 +109,43 @@
                 <br>
                 <span class="url">Ingresando por PUT</span>
                 <div class="codigo">
-                    <p>http://localhost:3000<span class="url">/funciones/:id</span> Vamos a poder actualizar una funcion</p>
+                    <p>http://localhost:3000<span class="url">/funciones/:id</span> Vamos a poder actualizar una funcion
+                    </p>
                 </div>
                 <br>
                 <span class="url">Ingresando por DELETE</span>
                 <div class="codigo">
-                    <p>http://localhost:3000<span class="url">/funciones/:id</span> Vamos a poder eliminar una funcion</p>
+                    <p>http://localhost:3000<span class="url">/funciones/:id</span> Vamos a poder eliminar una funcion
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-5"><!-- USUARIOS -->
+                <h3>Usuarios</h3>
+                <p><span class="url">Ingresando por GET</span> vamos a poder obtener la siguiente información:</p>
+                <div class="codigo">
+                    <p>http://localhost:3000<span class="url">/users</span> Ver todos los usuarios registrados</p>
+                    <p>http://localhost:3000<span class="url">/users/:id</span> Ver un usuario especifico por ID</p>
+                </div>
+                <br>
+                <p>Vamos a poder hacer las siguientes acciones en base a Usuarios:</p>
+                <span class="url">Ingresando por POST</span>
+                <div class="codigo">
+                    <p>http://localhost:3000<span class="url">/users</span> Le pasamos los datos de un nuevo usuario</p>
+                    <p>http://localhost:3000<span class="url">/users/login</span> Le pasamos el email y contraseña para
+                        que nos genere el token</p>
+                </div>
+                <br>
+                <span class="url">Ingresando por PUT</span>
+                <div class="codigo">
+                    <p>http://localhost:3000<span class="url">/users/id</span> Puedo actualizar un usuario en particular
+                    </p>
+                </div>
+                <br>
+                <span class="url">Ingresando por DELETE</span>
+                <div class="codigo">
+                    <p>http://localhost:3000<span class="url">/users/id</span> Puedo eliminar un usuario en particular
+                    </p>
                 </div>
             </div>
         </div>
