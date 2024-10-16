@@ -60,3 +60,19 @@ footer {
     background-color: #113C73;
     color: whitesmoke;
 }
+
+.documentacion {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.url {
+    color: #FEBB02;
+    font-weight: bold;
+}
+
+.codigo {
+    background-color: rgb(31, 31, 31);
+    padding: 1rem;
+    border-radius: 1rem;
+}

@@ -23,9 +23,13 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(path.dirname(__fileName), 'public', 'index.html'));
 })
 
+app.get("/documentacion", (req, res) => {
+    res.sendFile(path.join(path.dirname(__fileName), 'public', 'documentacion.html'));
+})
+
 app.use('/novedades', novedadesRoutes);
 app.use('/funciones', funcionesRoutes); 
-
+app.use('/usuarios', usersRoutes);
 
 function verificarRol(rolesAdmitidos) {
     return function(req, res, next){
@@ -34,7 +38,7 @@ function verificarRol(rolesAdmitidos) {
         if(rolesAdmitidos.includes(rolUsuario)){
             next();
         } else {
-            res.status(403).json({mesaje: "Acceso denegado"})
+            res.status(403).json({mensaje: "Acceso denegado"})
         }
     }
 }
@@ -44,7 +48,7 @@ app.get("/panel", verificarRol(["admin", "super-admin"]), (req, res) =>{
 });
 
 
-app.use('/usuarios', usersRoutes);
+
 
 
 app.listen(port, () => console.log(`http://localhost:${port}`));
