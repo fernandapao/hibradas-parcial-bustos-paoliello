@@ -29,7 +29,7 @@ app.get("/documentacion", (req, res) => {
 
 app.use('/novedades', novedadesRoutes);
 app.use('/funciones', funcionesRoutes); 
-app.use('/usuarios', usersRoutes);
+app.use('/users', usersRoutes);
 
 function verificarRol(rolesAdmitidos) {
     return function(req, res, next){
